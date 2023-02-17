@@ -18,6 +18,7 @@ void main() {
   animal3.fly();
 }
 
+/// Inheritance and Mixin
 class Animal extends Mammals with Fly, Jump {
   String? name;
   int? age;
