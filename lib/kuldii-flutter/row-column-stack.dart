@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Column'),
+          title: Text('Column, Row, and Stack'),
         ),
         body: Container(
           color: Colors.grey,
