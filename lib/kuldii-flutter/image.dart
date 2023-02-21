@@ -11,29 +11,28 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("Image"),
-        ),
-        body: Center(
-          child: Container(
-              width: 350,
-              height: 500,
-              color: Colors.lightBlue,
-              child:
-                  // Image.asset("images/swagcat1.png",
-                  //     fit:
-                  //         // BoxFit.fill,
-                  //         BoxFit.cover),
+        home: Scaffold(
+      appBar: AppBar(
+        title: Text("Image"),
+      ),
+      body: Center(
+        child: Container(
+          width: 350,
+          height: 500,
+          color: Colors.lightBlue,
+          child: Image.asset("images/swagcat2.png",
+              fit:
+                  // BoxFit.fill,
+                  BoxFit.cover),
 
-                  /// OR
+          /// OR
 
-                  Image(
-                      image:
-                          // AssetImage("images/swagcat1.png"),
-                          NetworkImage("https://picsum.photos/200/300"))),
+          // Image(
+          //     image:
+          //         // AssetImage("images/swagcat1.png"),
+          //         NetworkImage("https://picsum.photos/200/300"))),
         ),
       ),
-    );
+    ));
   }
 }

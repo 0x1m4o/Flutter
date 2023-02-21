@@ -98,7 +98,7 @@ class MyApp extends StatelessWidget {
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                            children: myfavColor.map((color) {
+                          children: myfavColor.map((color) {
                           return Container(
                             child: Text(color),
                             color: Colors.lightBlue,
