@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/kuldii-flutter/text_field-usage.dart';
-import './home.dart';
+import '../home.dart';
 
 main() {
   runApp(MyApp());
