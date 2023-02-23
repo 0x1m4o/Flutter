@@ -1,26 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:learning_flutter/kuldii-flutter/drawer/settings.dart';
-import './kuldii-flutter/drawer/pagesatu.dart';
+import 'package:learning_flutter/main.dart';
 
-main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
+class PageSatu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Drawer'),
+        title: Text('Page Satu'),
       ),
       drawer: Drawer(
           child: Column(
@@ -32,7 +19,7 @@ class MyHomePage extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             color: Colors.redAccent,
             child: Text(
-              'Drawer',
+              'Page Satu',
               style: TextStyle(
                   fontSize: 20,
                   color: Colors.white,
@@ -43,7 +30,7 @@ class MyHomePage extends StatelessWidget {
             tileColor: Colors.grey.withOpacity(0.2),
             onTap: () {
               Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => PageSatu()));
+                  .push(MaterialPageRoute(builder: (context) => MyHomePage()));
             },
             leading: Icon(
               Icons.home,
