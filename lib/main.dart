@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import './kuldii-flutter/pages/gallery.dart';
-import './kuldii-flutter/pages/homepage.dart';
-import './kuldii-flutter/pages/photo.dart';
+import './kuldii-flutter/route/pages/gallery.dart';
+import './kuldii-flutter/route/pages/homepage.dart';
+import './kuldii-flutter/route/pages/photo.dart';
 
 main() {
   runApp(MyApp());
