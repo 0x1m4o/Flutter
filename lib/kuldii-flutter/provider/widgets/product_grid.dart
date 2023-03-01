@@ -8,6 +8,8 @@ class Product_Grid extends StatelessWidget {
   Widget build(BuildContext context) {
     final productData = Provider.of<Products>(context);
     final allProducts = productData.allProducts;
+    final bool isLandScape =
+        MediaQuery.of(context).orientation == Orientation.landscape;
 
     return GridView.builder(
       padding: const EdgeInsets.all(10.0),
@@ -19,12 +21,19 @@ class Product_Grid extends StatelessWidget {
         allProducts[i].description!,
         allProducts[i].price!,
       ),
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 2 / 2,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-      ),
+      gridDelegate: (isLandScape)
+          ? SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 16 / 9,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+            )
+          : SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 2 / 2,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+            ),
     );
   }
 }
