@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:faker/faker.dart';
 
-import '../models/product.dart';
+import 'product.dart';
 
 Faker faker = Faker();
 
@@ -30,6 +30,6 @@ class Products with ChangeNotifier {
   }
 
   Product findById(productId) {
-    return _allProducts.firstWhere((prod_id) => prod_id == productId);
+    return _allProducts.firstWhere((prod_id) => prod_id.id == productId);
   }
 }
