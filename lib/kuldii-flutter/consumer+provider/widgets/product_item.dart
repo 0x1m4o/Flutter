@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final productData = Provider.of<Product>(context);
+    final productData = Provider.of<Product>(context, listen: false);
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
@@ -53,27 +53,31 @@ class ProductItem extends StatelessWidget {
                     ),
                   ),
                 ),
-                Row(
-                  children: [
-                    IconButton(
-                      icon: (!productData.isFavorite)
-                          ? Icon(Icons.favorite_border_outlined)
-                          : Icon(Icons.favorite),
-                      color: Colors.pink[300],
-                      onPressed: () {
-                        productData.statusFav();
-                      },
-                    ),
-                    IconButton(
-                      icon: Icon((!productData.isCart)
-                          ? Icons.shopping_cart_outlined
-                          : Icons.shopping_cart),
-                      onPressed: () {
-                        productData.statusCart();
-                      },
-                      color: Colors.black,
-                    ),
-                  ],
+                Consumer<Product>(
+                  builder: (context, value, child) {
+                    return Row(
+                      children: [
+                        IconButton(
+                          icon: (!productData.isFavorite)
+                              ? Icon(Icons.favorite_border_outlined)
+                              : Icon(Icons.favorite),
+                          color: Colors.pink[300],
+                          onPressed: () {
+                            productData.statusFav();
+                          },
+                        ),
+                        IconButton(
+                          icon: Icon((!productData.isCart)
+                              ? Icons.shopping_cart_outlined
+                              : Icons.shopping_cart),
+                          onPressed: () {
+                            productData.statusCart();
+                          },
+                          color: Colors.black,
+                        ),
+                      ],
+                    );
+                  },
                 )
               ],
             ),

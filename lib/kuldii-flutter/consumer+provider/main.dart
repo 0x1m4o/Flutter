@@ -1,9 +1,9 @@
-import './consumer+provider/providers/all_products.dart';
+import './providers/all_products.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
-import './consumer+provider/screens/products_overview_screen.dart';
-import './nested+provider/screens/product_detail_screen.dart';
+import './screens/products_overview_screen.dart';
+import './screens/product_detail_screen.dart';
 
 void main() {
   runApp(MyApp());
