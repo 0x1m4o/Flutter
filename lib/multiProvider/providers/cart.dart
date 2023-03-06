@@ -10,6 +10,14 @@ class Cart with ChangeNotifier {
     return _items!.length;
   }
 
+  double? get totalHarga {
+    var total = 0.0;
+    _items!.forEach((key, cartItem) {
+      total += cartItem.qty! * cartItem.price!;
+    });
+    return total;
+  }
+
   void addCart(String productId, String title, int price) {
     if (items.containsKey(productId)) {
       // Sudah Tesedia Product di dalam Map
