@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learning_flutter/multiProvider/providers/cart.dart';
-import 'package:learning_flutter/multiProvider/widgets/badget.dart';
+import '../providers/cart.dart';
+import '../widgets/badget.dart';
 import '../providers/all_products.dart';
 import './card_screen.dart';
 import 'package:provider/provider.dart';

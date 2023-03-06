@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../providers/cart.dart';
-import 'package:learning_flutter/multiProvider/widgets/badget.dart';
+import '../widgets/badget.dart';
 import 'package:provider/provider.dart';
 
 class CardScreen extends StatelessWidget {
