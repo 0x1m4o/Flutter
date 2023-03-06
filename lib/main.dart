@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './http-post/models/http_provider.dart';
+import './http-get/models/http_provider.dart';
 
-// import './http-post/pages/home_stateful.dart';
-import './http-post/pages/home_provider.dart';
+// import './http-get/pages/home_stateful.dart';
+import './http-get/pages/home_provider.dart';
 
 void main() {
   runApp(MyApp());
