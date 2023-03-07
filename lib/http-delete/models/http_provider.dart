@@ -12,6 +12,7 @@ class HttpProvider with ChangeNotifier {
     url = Uri.parse('https://reqres.in/api/users/' + id);
     var hasilResponse = await http.get(url!);
 
+    // Response status is 200 mean that the status is get the data.
     if (hasilResponse.statusCode == 200) {
       _data = json.decode(hasilResponse.body)['data'];
       notifyListeners();
@@ -23,7 +24,7 @@ class HttpProvider with ChangeNotifier {
 
   void deleteData(BuildContext context) async {
     var hasilResponse = await http.delete(url!);
-
+    // Response status is 204 mean that the status is delete the data.
     if (hasilResponse.statusCode == 204) {
       _data = {};
       notifyListeners();
