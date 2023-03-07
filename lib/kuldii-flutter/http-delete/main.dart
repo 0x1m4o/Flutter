@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './http-delete/models/http_provider.dart';
+import './models/http_provider.dart';
 
-// import './http-delete/pages/home_stateful.dart';
-import './http-delete/pages/home_provider.dart';
+// import './pages/home_stateful.dart';
+import './pages/home_provider.dart';
 
 void main() {
   runApp(MyApp());
