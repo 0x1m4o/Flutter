@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import './firebase - get/providers/players.dart';
-import './firebase - get/pages/detail_player_page.dart';
-import './firebase - get/pages/add_player_page.dart';
-import './firebase - get/pages/home_page.dart';
+import './providers/players.dart';
+import './pages/detail_player_page.dart';
+import './pages/add_player_page.dart';
+import './pages/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,6 +13,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    // Menggunakan state provider 
     return ChangeNotifierProvider(
       create: (context) => Players(),
       child: MaterialApp(
