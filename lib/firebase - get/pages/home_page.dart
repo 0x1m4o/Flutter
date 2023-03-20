@@ -112,16 +112,27 @@ class _HomePageState extends State<HomePage> {
                   ),
                   trailing: IconButton(
                     onPressed: () {
-                      allPlayerProvider.deletePlayer(id!).then((_) {
-                        setState(() {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text("Berhasil dihapus"),
-                              duration: Duration(milliseconds: 500),
+                      allPlayerProvider.deletePlayer(id!).then((response) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text("Berhasil dihapus"),
+                            duration: Duration(milliseconds: 500),
+                          ),
+                        );
+                      }).catchError((err) => showDialog(
+                            context: context,
+                            builder: (context) => AlertDialog(
+                              title: Text('Terjadi Error $err'),
+                              content: Text('Tidak dapat menambahkan Player.'),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text('Close'))
+                              ],
                             ),
-                          );
-                        });
-                      });
+                          ));
                     },
                     icon: Icon(Icons.delete),
                   ),

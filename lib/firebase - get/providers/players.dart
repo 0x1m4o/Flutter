@@ -105,19 +105,40 @@ class Players with ChangeNotifier {
     );
   }
 
-  Future<void> deletePlayer(String id) {
+  deletePlayer(String id) async {
     Uri url = Uri.parse(
-        "https://learning-flutter-fire-050628-default-rtdb.asia-southeast1.firebasedatabase.app/players/${id}.json");
-    return http
-        .delete(url)
-        // Then digunakan untuk menyimpan data di memory list[] sedangkan http.delete yang dilakukan diatas ada untuk menyimpan di database.
-        .then(
-      (response) {
-        _allPlayer.removeWhere((element) => element.id == id);
+        "https://learning-flutter-fire-050628-default-rtdb.asia-southeast1.firebasedatabase.app/players/$id.json");
+    try {
+      final response = await http.delete(url).then((response) {
+        print('1 ${response.statusCode}');
+        if (response.statusCode >= 200 && response.statusCode <= 300) {
+          print('2 ${response.statusCode}');
+          _allPlayer.removeWhere((element) => element.id == id);
+        } else {
+          throw (response.statusCode);
+        }
         notifyListeners();
-      },
-    );
+      });
+
+      // Then digunakan untuk menyimpan data di memory list[] sedangkan http.delete yang dilakukan diatas ada untuk menyimpan di database.
+    } catch (err) {
+      print(err);
+      throw (err);
+    }
   }
+  // Future<void> deletePlayer(String id) {
+  //   Uri url = Uri.parse(
+  //       "https://learning-flutter-fire-050628-default-rtdb.asia-southeast1.firebasedatabase.app/players/${id}.json");
+  //   return http
+  //       .delete(url)
+  //       // Then digunakan untuk menyimpan data di memory list[] sedangkan http.delete yang dilakukan diatas ada untuk menyimpan di database.
+  //       .then(
+  //     (response) {
+  //       _allPlayer.removeWhere((element) => element.id == id);
+  //       notifyListeners();
+  //     },
+  //   );
+  // }
 
   Future<void> initialData() async {
     Uri url = Uri.parse(
