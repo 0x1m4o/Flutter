@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../pages/detail_player_page.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import '../pages/add_player_page.dart';
 
 import '../providers/players.dart';
@@ -78,9 +79,28 @@ class _HomePageState extends State<HomePage> {
                       arguments: id,
                     );
                   },
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(
-                      allPlayerProvider.allPlayer[index].imageUrl!,
+                  leading:
+                      // CircleAvatar(
+                      //   backgroundImage: NetworkImage(
+                      //     allPlayerProvider.allPlayer[index].imageUrl!,
+                      //   ),
+                      // ),
+                      ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      child: CachedNetworkImage(
+                        imageUrl: allPlayerProvider.allPlayer[index].imageUrl!,
+                        placeholder: (context, url) =>
+                            CircularProgressIndicator(),
+                        errorWidget: (context, url, error) => ClipRRect(
+                          borderRadius: BorderRadius.circular(50),
+                          child: Container(
+                              child: Image.network(
+                                  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQM5z7l_V183adxjX0NHjejDhNSdunjN8UoTkZIBKts_Q&s')),
+                        ),
+                      ),
                     ),
                   ),
                   title: Text(
@@ -93,12 +113,14 @@ class _HomePageState extends State<HomePage> {
                   trailing: IconButton(
                     onPressed: () {
                       allPlayerProvider.deletePlayer(id!).then((_) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text("Berhasil dihapus"),
-                            duration: Duration(milliseconds: 500),
-                          ),
-                        );
+                        setState(() {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text("Berhasil dihapus"),
+                              duration: Duration(milliseconds: 500),
+                            ),
+                          );
+                        });
                       });
                     },
                     icon: Icon(Icons.delete),
