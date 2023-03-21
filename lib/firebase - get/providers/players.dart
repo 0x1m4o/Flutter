@@ -110,9 +110,7 @@ class Players with ChangeNotifier {
         "https://learning-flutter-fire-050628-default-rtdb.asia-southeast1.firebasedatabase.app/players/$id.json");
     try {
       final response = await http.delete(url).then((response) {
-        print('1 ${response.statusCode}');
         if (response.statusCode >= 200 && response.statusCode <= 300) {
-          print('2 ${response.statusCode}');
           _allPlayer.removeWhere((element) => element.id == id);
         } else {
           throw (response.statusCode);
