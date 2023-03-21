@@ -15,27 +15,26 @@ class Players with ChangeNotifier {
   Player selectById(String id) =>
       _allPlayer.firstWhere((element) => element.id == id);
 
-  Future<void> addPlayer(String name, String position, String image) {
+  Future<void> addPlayer(String name, String position, String image) async {
     DateTime datetimeNow = DateTime.now();
 
     Uri url = Uri.parse(
         "https://learning-flutter-fire-050628-default-rtdb.asia-southeast1.firebasedatabase.app/players.json");
-    return http
-        .post(
-      url,
-      body: json.encode(
-        {
-          "name": name,
-          "position": position,
-          "imageUrl": image,
-          "createdAt": datetimeNow.toString(),
-        },
-      ),
-    )
-        // Then digunakan untuk menyimpan data di memory list[] sedangkan http.post yang dilakukan diatas ada untuk menyimpan di database.
-        .then(
-      (response) {
-        print("THEN FUNCTION");
+
+    /// Metode Try and Catch
+    try {
+      final response = await http.post(
+        url,
+        body: json.encode(
+          {
+            "name": name,
+            "position": position,
+            "imageUrl": image,
+            "createdAt": datetimeNow.toString(),
+          },
+        ),
+      );
+      if (response.statusCode >= 200 && response.statusCode <= 300) {
         _allPlayer.add(
           Player(
             id: json.decode(response.body)["name"].toString(),
@@ -45,10 +44,36 @@ class Players with ChangeNotifier {
             createdAt: datetimeNow,
           ),
         );
+      } else {
+        throw ('${response.statusCode}');
+      }
+      notifyListeners();
+    } catch (error) {
+      throw (error);
+    }
 
-        notifyListeners();
-      },
-    );
+    /// Metode then catch
+    // Then digunakan untuk menyimpan data di memory list[] sedangkan http.post yang dilakukan diatas ada untuk menyimpan di database.
+    //     .then(
+    //   (response) {
+    //     print("THEN FUNCTION");
+    //     if (response.statusCode >= 200 && response.statusCode <= 300) {
+    //       _allPlayer.add(
+    //         Player(
+    //           id: json.decode(response.body)["name"].toString(),
+    //           name: name,
+    //           position: position,
+    //           imageUrl: image,
+    //           createdAt: datetimeNow,
+    //         ),
+    //       );
+    //     } else {
+    //       throw ('${response.statusCode}');
+    //     }
+
+    //     notifyListeners();
+    //   },
+    // ).catchError((error) => throw (error));
   }
 
   Future<void> editPlayer(
@@ -80,19 +105,38 @@ class Players with ChangeNotifier {
     );
   }
 
-  Future<void> deletePlayer(String id) {
+  deletePlayer(String id) async {
     Uri url = Uri.parse(
-        "https://learning-flutter-fire-050628-default-rtdb.asia-southeast1.firebasedatabase.app/players/${id}.json");
-    return http
-        .delete(url)
-        // Then digunakan untuk menyimpan data di memory list[] sedangkan http.delete yang dilakukan diatas ada untuk menyimpan di database.
-        .then(
-      (response) {
-        _allPlayer.removeWhere((element) => element.id == id);
+        "https://learning-flutter-fire-050628-default-rtdb.asia-southeast1.firebasedatabase.app/players/$id.json");
+    try {
+      final response = await http.delete(url).then((response) {
+        if (response.statusCode >= 200 && response.statusCode <= 300) {
+          _allPlayer.removeWhere((element) => element.id == id);
+        } else {
+          throw (response.statusCode);
+        }
         notifyListeners();
-      },
-    );
+      });
+
+      // Then digunakan untuk menyimpan data di memory list[] sedangkan http.delete yang dilakukan diatas ada untuk menyimpan di database.
+    } catch (err) {
+      print(err);
+      throw (err);
+    }
   }
+  // Future<void> deletePlayer(String id) {
+  //   Uri url = Uri.parse(
+  //       "https://learning-flutter-fire-050628-default-rtdb.asia-southeast1.firebasedatabase.app/players/${id}.json");
+  //   return http
+  //       .delete(url)
+  //       // Then digunakan untuk menyimpan data di memory list[] sedangkan http.delete yang dilakukan diatas ada untuk menyimpan di database.
+  //       .then(
+  //     (response) {
+  //       _allPlayer.removeWhere((element) => element.id == id);
+  //       notifyListeners();
+  //     },
+  //   );
+  // }
 
   Future<void> initialData() async {
     Uri url = Uri.parse(
@@ -101,17 +145,18 @@ class Players with ChangeNotifier {
     var hasilGetData = await http.get(url);
 
     var dataResponse = json.decode(hasilGetData.body) as Map<String, dynamic>;
-
-    dataResponse.forEach((key, value) {
-      DateTime dateTimeParse =
-          DateFormat('yyyy-mm-dd hh:mm:ss').parse(value['createdAt']);
-      _allPlayer.add(Player(
-          id: key,
-          name: value['name'],
-          position: value['position'],
-          imageUrl: value['imageUrl'],
-          createdAt: dateTimeParse));
-      notifyListeners();
-    });
+    if (dataResponse != null) {
+      dataResponse.forEach((key, value) {
+        DateTime dateTimeParse =
+            DateFormat('yyyy-mm-dd hh:mm:ss').parse(value['createdAt']);
+        _allPlayer.add(Player(
+            id: key,
+            name: value['name'],
+            position: value['position'],
+            imageUrl: value['imageUrl'],
+            createdAt: dateTimeParse));
+        notifyListeners();
+      });
+    }
   }
 }
