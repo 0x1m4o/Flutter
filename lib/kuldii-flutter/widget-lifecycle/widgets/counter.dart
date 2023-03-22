@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '/widget-lifecycle/pages/other_page.dart';
+import '../pages/other_page.dart';
 
 class WidgetCounter extends StatefulWidget {
   const WidgetCounter({

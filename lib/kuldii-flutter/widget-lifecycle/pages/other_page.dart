@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learning_flutter/widget-lifecycle/pages/counter_page.dart';
+import '../pages/counter_page.dart';
 
 class OtherPage extends StatefulWidget {
   static const routeName = '/other-page';
