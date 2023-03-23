@@ -7,7 +7,7 @@
     * [Source of Dart Basic, Extends, Mixin](#Source-of-Dart-Basic-Extends-Mixin)
   * [Widget Basic](#Widget-Basic)
     * [Text Widget](#Source-of-Text-Widget)
-  * [Row, Column, and Stack widget](#Row, Column, and Stack widget)
+  * [Row, Column, and Stack widget](#Row-Column-and-Stack-widget)
     * [Row, Column, and Stack widget](#Source-of-Row-Column-and-Stack-widget)
   * [ListView(.Builder and .Separated) Widget](#ListView-Builder-and-Separated-Widget)
     * [ListView(.Builder and .Separated) Widget](#Source-of-ListView-Builder-and-Separated-Widget)
