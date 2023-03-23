@@ -1,12 +1,10 @@
-# CTF Kunai
----------------------------------------------------------------------------
-#### This is help me while doing CTF. 
-
----------------------------------------------------------------------------
+# Flutter README
+## Created By [Muhamad Duta Chandra](https://www.linkedin.com/in/muhamaddutachandra/)
+#### I created this to improve my Flutter knowledge, skills, and understanding.
 ## Table Of Contents
 * [Flutter Basic](#Flutter-Basic)
   * [Dart Basic, Extends, Mixin](#Dart-Basic-Extends-Mixin)
-    * [...](#...)
+    * [Dart Basic, Extends, Mixin](#Dart-Basic-Extends-Mixin-Source)
   * [...](#...)
     * [...](#...)
   * [...](#...)
@@ -43,49 +41,19 @@
 # Flutter Basic
 
 - ## Dart Basic, Extends, Mixin
-#### is
-- ### Source
-dirsearh -u http://google.com
-###### Example :
-```
-dirsearch -u http://hackme.my.id/
-```
-
+#### Lorem Ipsum
+- ### Dart Basic, Extends, Mixin - Source
+- [My Github](#...)
+- [Documentation](#...)
+- [Youtube Video](#...)
 
 
 ---------------------------------------------------------------------------
 # Template
-## Template Software
-- ###  oooooooo
-ooooooooooooooooooooooooooooooooooo
-###### Example :
-```
-ooooooooooooooooooooooooooooooooooo 
-```
 
----------------------------------------------------------------------------
-## Template with Sub Contents
-### 𝚰. oooooooo
-- ### ooooooooooooooooooooooooooooooooooo 
-ooooooooooooooooooooooooooooooooooo  
-###### Example :
-```
-ooooooooooooooooooooooooooooooooooo  
-```
-### 𝚰𝚰. oooooooo
-- ### ooooooooooooooooooooooooooooooooooo 
-ooooooooooooooooooooooooooooooooooo  
-###### Example :
-```
-ooooooooooooooooooooooooooooooooooo  
-```
-
----------------------------------------------------------------------------
-## Template Command
-- ###  oooooooo
-```
-ooooooooooooooooooooooooooooooooooo
-```
-
----------------------------------------------------------------------------
-
+- ## ...
+#### Lorem Ipsum
+- ### ... - Source
+- [My Github](#.,.)
+- [Documentation](#.,.)
+- [Youtube Video](#.,.)
